@@ -1,0 +1,21 @@
+body {
+    white-space: nowrap;
+}
+
+#wrongPageText {
+    align-items: center;
+    justify-content: center;
+}
+
+#noCoursesFoundText {
+    display: none;
+}
+
+input[type="checkbox"] {
+    accent-color: orange;
+}
+
+#content>div {
+    display: flex;
+    justify-content: space-between;
+}
