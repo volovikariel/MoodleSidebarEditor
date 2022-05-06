@@ -1,7 +1,7 @@
 function start_mutation_observer() {
     let processedCourseElements = new Set()
     chrome.storage.sync.get({ 'savedCourses': {} }, ({ savedCourses }) => {
-        const observer = new MutationObserver((mutations) => {
+        function onMutation(mutations) {
             for (const { addedNodes } of mutations) {
                 for (const node of addedNodes) {
                     const courseElements = getCourseElements()
@@ -27,7 +27,8 @@ function start_mutation_observer() {
                     }
                 }
             }
-        });
+        }
+        const observer = new MutationObserver(onMutation);
         observer.observe(document, { childList: true, subtree: true });
 
         // In case the content script has been injected when some of the DOM has already loaded
