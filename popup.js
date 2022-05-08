@@ -7,7 +7,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     if (tab.url.startsWith("https://moodle.concordia.ca")) {
         wrongPageText.style.display = "none"
         chrome.tabs.sendMessage(tab.id, { receiver: "content_script", action: "getCourseElements" }, (courseElements) => {
-            if (courseElements.length > 0) {
+            if (courseElements?.length > 0) {
                 noCoursesFoundText.style.display = "none"
                 populate_course_list_element()
             } else {
